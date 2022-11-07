@@ -1,9 +1,10 @@
 import React from 'react';
-
+import img from '../../images/14.webp'
 const Home = () => {
     return (
         <div>
-            <h2>home</h2>
+            <img className='w-full' src={img} alt="" />
+            <h2 className='text-5xl absolute top-48 font-bold left-96'>We Create Memory Of Happiness.</h2>
         </div>
     );
 };
