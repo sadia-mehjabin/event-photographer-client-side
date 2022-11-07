@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-    const handleLogIn = event => {
-        event.preventDefault();
-    }
+const SignUp = () => {
     return (
         <div className="hero">
-            <div>
-                <h1 className="text-5xl m-5 font-bold text-center">Login now!</h1>
+            <div >
+                <h1 className="text-5xl m-5 font-bold text-center">Sign up now!</h1>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-green-300 m-5">
-                <form onSubmit={handleLogIn} className="card-body">
+                <form className="card-body">
                     <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -23,9 +20,9 @@ const Login = () => {
                     </label>
                     <input type="text" placeholder="password" className="input input-bordered" />
                     </div>
-                    <p>Don't have an account? <Link className='text-primary' to={'/signup'}>sign up</Link></p>
+                    <p>already have an account? <Link className='text-primary' to={'/login'}>Log in</Link></p>
                     <div className="form-control mt-6">
-                    <input type="submit"  className="btn btn-primary text-white" value="Login" />
+                    <input type="submit"  className="btn btn-error" value="Sign up" />
                     </div>
                 </form>
                 </div>
@@ -34,4 +31,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
