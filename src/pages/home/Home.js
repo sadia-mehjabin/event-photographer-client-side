@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import img from '../../images/14.webp'
 import Service from '../../services/Service';
 
@@ -21,6 +21,9 @@ const Home = () => {
                     service={service}
                     ></Service>)
                 }
+            </div>
+            <div className='flex justify-center'>
+            <Link to={'/services'}><button className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg">View All</button></Link>
             </div>
         </div>
     );

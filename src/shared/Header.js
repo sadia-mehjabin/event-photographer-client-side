@@ -39,7 +39,7 @@ const Header = () => {
           user? 
           <>
           <li className="btn mx-2"><Link>My reviews</Link></li>
-          <li className="btn mx-2"><Link >Add service</Link></li>
+          <li className="btn mx-2"><Link to={'/addService'}>Add service</Link></li>
           <li onClick={handleLogOut} className="btn mx-2">Log out</li>
           </>
           : <li className="btn"><Link to={'/login'}>Log in</Link></li>
