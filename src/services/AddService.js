@@ -18,7 +18,23 @@ const AddService = () => {
             price ,
             description
         }
-        console.log(newService)
+        
+        fetch('http://localhost:5000/services', {
+            method : 'POST',
+            headers : {
+                'content-type': 'application/json',
+            },
+            body : JSON.stringify(newService)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                alert('added successfully')
+                form.reset()
+            }
+        })
+        .catch(error => console.error(error))
+
     }
     return (
         <div className='bg-yellow-200 rounded-lg w-1/4 mx-auto my-5 p-3'>
