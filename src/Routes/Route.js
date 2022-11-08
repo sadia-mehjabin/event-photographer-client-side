@@ -3,6 +3,7 @@ import Blog from "../pages/Blog";
 import Home from "../pages/home/Home";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import Services from "../services/Services";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
       children: [
         {
             path: '/', 
-            element: <Home></Home>
+            element: <Home></Home>,
+            loader: () => fetch('http://localhost:5000/services')
         },
         {
             path: '/blog', 
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
         {
             path: '/signup', 
             element: <SignUp></SignUp>
+        },
+        {
+            path: '/services', 
+            element: <Services></Services>,
+            loader: () => fetch('http://localhost:5000/services')
         },
       ]
     }

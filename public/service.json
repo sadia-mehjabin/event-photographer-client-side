@@ -1,0 +1,38 @@
+[
+    {
+        "name" : "Wedding",
+        "img" : "",
+        "price" : "per day 500$",
+        "description" : "wedding is a most precious time in everyones life. don't you think that it should be captured in a innovative way? we assure you to  provide a beutifull memory by clicking some extra ordinary photo in your life. "
+    },
+    {
+        "name" : "Holud nigth",
+        "img" : "https://ibb.co/y8P0qmY",
+        "price" : "per hour 100$",
+        "description" : "In every wedding, there always a haldi nigth for enjoy! is not it neccessery to capture the most enjoyeble moment? "
+    },
+    {
+        "name" : "birthday",
+        "img" : "",
+        "price" : "",
+        "description" : ""
+    },
+    {
+        "name" : "picnic",
+        "img" : "https://ibb.co/RPRb70B",
+        "price" : "50$",
+        "description" : "Want to go a holiday? "
+    },
+    {
+        "name" : "mehendi ceremony",
+        "img" : "https://ibb.co/VtGTygG",
+        "price" : "",
+        "description" : "if there is a holud nigth, there should be also a mehendi ceremony, rigth? dont wanna miss it to capture? then here i am!"
+    },
+    {
+        "name" : "seminar",
+        "img" : "",
+        "price" : "",
+        "description" : ""
+    }
+]
