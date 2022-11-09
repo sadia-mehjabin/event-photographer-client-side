@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
@@ -8,6 +8,9 @@ const Login = () => {
     const {userLogin, googleLogin} = useContext(AuthContext)
     const [message, setMessage] = useState()
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/' ;
 
     const handleLogIn = event => {
         event.preventDefault();
@@ -19,8 +22,23 @@ const Login = () => {
         userLogin(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user)
-            navigate('/')
+            const existingUser = {
+                email: user.email
+            }
+            console.log(existingUser)
+
+            fetch('http://localhost:5000/jwt', {
+                method: 'POST',
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(existingUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('token', data.token)
+                navigate(from, {replace:true})
+            })
         })
         .catch(error => setMessage(error.message))
     } 

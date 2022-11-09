@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ const MyReview = () => {
     const {user} = useContext(AuthContext)
     const reviews = useLoaderData()
     const [myReview, setMyReview]  = useState(reviews)
+    
 
     const handleDelete = (id) => {
         const agree = window.confirm('are you sure to delete?')
