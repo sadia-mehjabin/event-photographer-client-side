@@ -12,15 +12,14 @@ const ReviewTable = () => {
         .catch(err => console.error(err))
     })
     return (
-        <div className="w-full m-5">
+        <div className="w-full m-5 justify-self-auto">
             <table className="table w-full "> 
                 <thead>
                 <tr>
                     <th>image & Name</th>
                     <th>service name</th>
                     <th>review</th>
-                    <th>Update</th>
-                    <th>Delete</th>
+                    
                 </tr>
                 </thead>
                 {
@@ -42,15 +41,9 @@ const ReviewTable = () => {
                     <td>
                         {review.serviceName}
                     </td>
-                    <td>
+                    <td className='col-span-2'>
                         {review.review}
                     </td>
-                    <td>
-                    <button className="btn btn-success btn-xs">Update</button>
-                    </td>
-                    <th>
-                    <button className="btn btn-danger btn-xs">Delete</button>
-                    </th>
                 </tr>
                 </tbody>
                 </>)

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { json, Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,11 +9,9 @@ const MyReview = () => {
     const {user} = useContext(AuthContext)
     const reviews = useLoaderData()
     const [myReview, setMyReview]  = useState(reviews)
-    
 
     const handleDelete = (id) => {
         const agree = window.confirm('are you sure to delete?')
-        
 
         if(agree){
             fetch(`http://localhost:5000/review/${id}`, {
@@ -23,14 +21,6 @@ const MyReview = () => {
             .then(data => {
                 console.log(data)
                 if(data.deletedCount > 0){
-                    
-                //    <div className="toast toast-top toast-end">
-                //         <div className="alert alert-info">
-                //             <div>
-                //             <span>delete successfully.</span>
-                //             </div>
-                //         </div>
-                //     </div>
                 const restReview = reviews.filter(rev => rev._id !== id)
                 setMyReview(restReview)
                 toast("deleted successfully")
@@ -38,6 +28,18 @@ const MyReview = () => {
             })
 
         }
+    }
+
+    const handleEditReview = id => {
+        fetch(`http://localhost:5000/review/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(myReview)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
 
     return (
@@ -76,7 +78,9 @@ const MyReview = () => {
                         {review.review}
                     </td>
                     <td>
-                    <button className="btn btn-success btn-xs">Edit</button>
+                    <Link>
+                    <button className="btn btn-success btn-xs" onClick={() => handleEditReview}>Edit</button>
+                    </Link>
                     </td>
                     <th>
                     <button className="btn btn-danger btn-xs" onClick={() => handleDelete(review._id)}>Delete</button>
