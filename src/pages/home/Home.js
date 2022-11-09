@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import img from '../../images/14.webp'
 import Service from '../../services/Service';
+import ExtraSection1 from './ExtraSection1';
 
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
             <div className='flex justify-center'>
             <Link to={'/services'}><button className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg">View All</button></Link>
             </div>
+            <ExtraSection1></ExtraSection1>
         </div>
     );
 };

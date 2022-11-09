@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
-
+    console.log(user)
     const handleLogOut = () => {
       logOut()
       .then(() => {
@@ -38,8 +38,9 @@ const Header = () => {
         {
           user? 
           <>
-          <li className="btn mx-2"><Link>My reviews</Link></li>
+          <li className="btn mx-2"><Link to={'/myReview'}>My reviews</Link></li>
           <li className="btn mx-2"><Link to={'/addService'}>Add service</Link></li>
+          <h2>{user.displayName}</h2>
           <li onClick={handleLogOut} className="btn mx-2">Log out</li>
           </>
           : <li className="btn"><Link to={'/login'}>Log in</Link></li>

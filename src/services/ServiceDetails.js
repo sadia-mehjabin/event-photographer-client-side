@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import ReviewTable from '../pages/review/ReviewTable';
 
 const ServiceDetails = () => {
    const data = useLoaderData()
    
     return (
-        <div className='grid grid-cols-2'>
+        <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1'>
             <div>
             <h2 className='text-3xl font-bold m-3'>Service details about {data.name}</h2>
             <div className="card w-full bg-base-100 shadow-xl">
@@ -19,7 +20,7 @@ const ServiceDetails = () => {
             </div>
             <div>
                 <h2 className='text-3xl font-bold m-3 text-center'>Review Section</h2>
-                
+                <ReviewTable></ReviewTable>
                 <div className='flex justify-center'>
                  <Link to={'/addReview'}><button className='btn btn-primary'>Add Review</button></Link>
                 </div>
