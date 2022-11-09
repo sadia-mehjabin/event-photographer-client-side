@@ -4,7 +4,7 @@ import ReviewTable from '../pages/review/ReviewTable';
 import AddReview from '../pages/review/AddReview'
 const ServiceDetails = () => {
    const data = useLoaderData()
-   
+//    console.log(data)
     return (
         <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1'>
             <div>
@@ -24,7 +24,10 @@ const ServiceDetails = () => {
             </div>
             <div>
                 <h2 className='text-3xl font-bold m-3 text-center'>Review Section</h2>
-                <ReviewTable></ReviewTable>
+                <ReviewTable
+                key={data._id}
+                data={data}
+                ></ReviewTable>
             </div>
         </div>
     );

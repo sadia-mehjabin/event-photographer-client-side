@@ -1,14 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
-const ReviewTable = () => {
+const ReviewTable = ({data}) => {
+    const {serviceName} = data;
     const {user} = useContext(AuthContext)
     const [reviews, setReviews] = useState([]);
-    
+    console.log(data)
+
     useEffect( () => {
         fetch('http://localhost:5000/review')
         .then(res => res.json())
-        .then(data => setReviews(data))
+        .then(d => {
+            const filteredData = d.filter(dat => dat.name ===  serviceName)
+            setReviews(filteredData)
+            console.log(filteredData)
+        })
+            // data.filter(d._id === )
+            // setReviews(data)
+            
+      
         .catch(err => console.error(err))
     })
     return (
@@ -23,7 +33,7 @@ const ReviewTable = () => {
                 </tr>
                 </thead>
                 {
-                    reviews.map(review => <>
+                    reviews.map(review =>  <>
                     <tbody>
                 <tr>
                     <td>
@@ -37,9 +47,6 @@ const ReviewTable = () => {
                         <div className="font-bold">{review.name}</div>
                         </div>
                     </div>
-                    </td>
-                    <td>
-                        {review.serviceName}
                     </td>
                     <td className='col-span-2'>
                         {review.review}

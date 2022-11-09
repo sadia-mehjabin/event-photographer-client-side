@@ -4,16 +4,18 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const AddReview = ({data}) => {
     const {user} = useContext(AuthContext)
-    const {name} = data;
+    
 
     const handleAddReview = event => {
         event.preventDefault()
         const form = event.target;
-        const name = form.name.value;
+        const serviceName = data.name;
         const review = form.review.value;
+        const name = form.name.value;
         
         const newReview = {
-            name, 
+            name,
+            serviceName, 
             review
         }
         
@@ -37,7 +39,7 @@ const AddReview = ({data}) => {
 
     return (
         <div className='bg-pink-200 rounded-lg w-3/4 mx-auto my-5 p-3'>
-            <h2 className='text-3xl font-bold text-center'>Add Review for {name}</h2>
+            <h2 className='text-3xl font-bold text-center'>Add Review for {data.name}</h2>
             {
                 user? <>
                 <form onSubmit={handleAddReview} className='flex flex-col p-3' >
