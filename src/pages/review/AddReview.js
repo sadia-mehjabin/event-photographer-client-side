@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
-const AddReview = () => {
-    
+const AddReview = ({data}) => {
+    const {user} = useContext(AuthContext)
+    const {name} = data;
+
     const handleAddReview = event => {
         event.preventDefault()
         const form = event.target;
         const name = form.name.value;
-        const serviceName = form.serviceName.value;
         const review = form.review.value;
         
         const newReview = {
-            name,
-            serviceName,
+            name, 
             review
         }
         
@@ -34,14 +36,23 @@ const AddReview = () => {
     }
 
     return (
-        <div className='bg-pink-200 rounded-lg w-1/4 mx-auto my-5 p-3'>
-            <h2 className='text-3xl font-bold text-center'>Add A Review</h2>
-            <form onSubmit={handleAddReview} className='flex flex-col p-3' >
-            <input name="name" type="text" placeholder="Your Full Name" className="input input-bordered w-full my-3 " required />
-            <input name="serviceName" type="text" placeholder="Service Name" className="input input-bordered w-full my-3 " required />
-            <textarea name="review" className="textarea textarea-primary my-3 p-5" placeholder="type yor review" required></textarea>
-            <button type="submit" className='btn btn-success'>Place New Review</button>
-            </form>
+        <div className='bg-pink-200 rounded-lg w-3/4 mx-auto my-5 p-3'>
+            <h2 className='text-3xl font-bold text-center'>Add Review for {name}</h2>
+            {
+                user? <>
+                <form onSubmit={handleAddReview} className='flex flex-col p-3' >
+                <input name="name" type="text" placeholder="Your Full Name" className="input input-bordered w-full my-3 " required />
+                <textarea name="review" className="textarea textarea-primary my-3 p-5" placeholder="type yor review" required></textarea>
+                <button type="submit" className='btn btn-success' >Place New Review</button>
+                </form>
+                </>
+                : <>
+                <h2 className='text-3xl text-primary font-semibold m-5 text-center'>you have to login for add review. please log in.</h2>
+                <div className='flex justify-center'>
+                <Link to={'/login'}><button className='btn btn-primary'>Login</button></Link>
+                </div>
+                </>
+            }
         </div>
     );
 };

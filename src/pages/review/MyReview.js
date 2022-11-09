@@ -24,6 +24,9 @@ const MyReview = () => {
                 const restReview = reviews.filter(rev => rev._id !== id)
                 setMyReview(restReview)
                 toast("deleted successfully")
+                if(restReview.length === 0){
+                    setMyReview('')
+                }
                 }
             })
 
@@ -79,7 +82,7 @@ const MyReview = () => {
                     </td>
                     <td>
                     <Link>
-                    <button className="btn btn-success btn-xs" onClick={() => handleEditReview}>Edit</button>
+                    <button className="btn btn-success btn-xs" onClick={() => handleEditReview(review._id)}>Edit</button>
                     </Link>
                     </td>
                     <th>
