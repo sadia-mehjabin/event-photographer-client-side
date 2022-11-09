@@ -27,6 +27,14 @@ const Home = () => {
             <Link to={'/services'}><button className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg">View All</button></Link>
             </div>
             <ExtraSection1></ExtraSection1>
+            <div className='bg-green-200 w-3/4 mx-auto m-5 p-5 rounded-lg'>
+                    <h2 className='text-center text-5xl font-bold m-4'>Contact us</h2>
+                    <p className='text-center font-bold'>our office: 31/A mirpur 12 road, dhaka.
+                        <br />
+                        email: sayemShikder@Gmail.com <br />
+                        contact no: 7224356
+                    </p>
+            </div>
         </div>
     );
 };

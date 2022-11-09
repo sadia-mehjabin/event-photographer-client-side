@@ -11,18 +11,8 @@
         "price" : "per hour 100$",
         "description" : "In every wedding, there always a haldi nigth for enjoy! is not it neccessery to capture the most enjoyeble moment? "
     },
-    {
-        "name" : "birthday",
-        "img" : "",
-        "price" : "",
-        "description" : ""
-    },
-    {
-        "name" : "picnic",
-        "img" : "https://ibb.co/RPRb70B",
-        "price" : "50$",
-        "description" : "Want to go a holiday? "
-    },
+  
+    
     {
         "name" : "mehendi ceremony",
         "img" : "https://ibb.co/VtGTygG",

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Service from './Service';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Services = () => {
     const data = useLoaderData()
@@ -10,7 +12,11 @@ const Services = () => {
             {
                 data.map(servs => 
                     <div className="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src={servs.img}  alt="" /></figure>
+                    <PhotoProvider>
+                <PhotoView src={servs.img}>
+                    <img src={servs.img} alt="" />
+                </PhotoView>
+            </PhotoProvider>
                     <div className="card-body">
                     <h2 className="card-title">{servs.name}</h2>
                     <h5><span className='font-bold'>Price:</span> {servs.price}</h5>

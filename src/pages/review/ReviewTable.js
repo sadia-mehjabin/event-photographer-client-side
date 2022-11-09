@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 const ReviewTable = ({data}) => {
-    const {serviceName} = data;
+    const {name} = data;
     const {user} = useContext(AuthContext)
     const [reviews, setReviews] = useState([]);
-    console.log(data)
+    
 
     useEffect( () => {
         fetch('http://localhost:5000/review')
         .then(res => res.json())
         .then(d => {
-            const filteredData = d.filter(dat => dat.name ===  serviceName)
+            const filteredData = d.filter(dat => dat.serviceName ===  name)
             setReviews(filteredData)
-            console.log(filteredData)
+            // console.log(filteredData)
         })
             // data.filter(d._id === )
             // setReviews(data)
@@ -27,7 +27,6 @@ const ReviewTable = ({data}) => {
                 <thead>
                 <tr>
                     <th>image & Name</th>
-                    <th>service name</th>
                     <th>review</th>
                     
                 </tr>
@@ -40,7 +39,7 @@ const ReviewTable = ({data}) => {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                            <img src={user?.img}/>
+                            <img src={user?.photoURL} alt="" />
                         </div>
                         </div>
                         <div>

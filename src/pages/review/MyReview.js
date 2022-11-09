@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { json, Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +24,6 @@ const MyReview = () => {
                 const restReview = reviews.filter(rev => rev._id !== id)
                 setMyReview(restReview)
                 toast("deleted successfully")
-                if(restReview.length === 0){
-                    setMyReview('')
-                }
                 }
             })
 
@@ -93,7 +90,11 @@ const MyReview = () => {
                 </tbody>
                 </>)
                 } 
+                {
+                    myReview.length === 0 && <h2 className='text-3xl font-bold m-5 text-center'>There is nothing to show. please add a review.</h2>
+                }
             </table>
+           
         </div>
         </div>
     );
