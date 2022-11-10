@@ -20,6 +20,9 @@ const SignUp = () => {
         createUser(email, password)
         .then(result => {
             const user = result.user;
+            user.photoURL = photoURL;
+            user.name = name;
+            console.log(user)
             navigate('/')
         })
         .catch(error => setMessage(error.message))
