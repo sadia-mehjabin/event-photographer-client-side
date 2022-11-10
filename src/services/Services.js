@@ -15,10 +15,10 @@ const Services = () => {
                 data.map(servs => 
                     <div className="card w-96 bg-base-100 shadow-xl">
                     <PhotoProvider>
-                <PhotoView src={servs.img}>
-                    <img src={servs.img} alt="" />
-                </PhotoView>
-            </PhotoProvider>
+                        <PhotoView src={servs.img}>
+                            <img className='h-96' src={servs.img} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                     <div className="card-body">
                     <h2 className="card-title">{servs.name}</h2>
                     <h5><span className='font-bold'>Price:</span> {servs.price}</h5>

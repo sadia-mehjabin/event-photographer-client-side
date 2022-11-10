@@ -8,7 +8,7 @@ const ReviewTable = ({data}) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/review')
+        fetch('https://event-photographer-server.vercel.app/review')
         .then(res => res.json())
         .then(d => {
             const filteredData = d.filter(dat => dat.serviceName ===  name)

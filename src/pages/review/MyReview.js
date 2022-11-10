@@ -14,7 +14,7 @@ const MyReview = () => {
     useTitle('my review')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user.email}`)
+        fetch(`https://event-photographer-server.vercel.app/review?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyReview(data))
     }, [user.email])
@@ -23,7 +23,7 @@ const MyReview = () => {
         const agree = window.confirm('are you sure to delete?')
 
         if(agree){
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://event-photographer-server.vercel.app/review/${id}`, {
                 method: 'DELETE',
             })
             .then(res => res.json())
@@ -40,7 +40,7 @@ const MyReview = () => {
     }
 
     const handleEditReview = id => {
-        fetch(`http://localhost:5000/review/${id}`, {
+        fetch(`https://event-photographer-server.vercel.app/review/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': "application/json"
