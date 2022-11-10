@@ -50,7 +50,7 @@ const Login = () => {
         googleLogin(provider)
         .then(result => {
             const user = result.user;
-            console.log(user)
+            navigate(from, {replace:true})
         })
         .catch(err => console.error(err))
     }

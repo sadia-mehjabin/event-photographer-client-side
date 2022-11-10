@@ -22,7 +22,6 @@ const SignUp = () => {
             const user = result.user;
             user.photoURL = photoURL;
             user.displayName = name;
-            console.log(user)
             navigate('/')
         })
         .catch(error => setMessage(error.message))

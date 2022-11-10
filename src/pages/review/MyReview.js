@@ -100,7 +100,7 @@ const MyReview = () => {
                 </>)
                 } 
                 {
-                    myReview.length === 0 && <h2 className='text-3xl font-bold m-5 text-center'>There is nothing to show. please add a review.</h2>
+                    myReview.length === 0 && <h2 className='text-3xl font-bold my-24 mx-auto text-center'>There is nothing to show. please add a review.</h2>
                 }
             </table>
            
