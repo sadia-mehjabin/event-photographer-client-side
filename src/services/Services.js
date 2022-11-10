@@ -3,9 +3,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Service from './Service';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../hooks/UseTitle';
 
 const Services = () => {
     const data = useLoaderData()
+    useTitle('services')
 
     return (
         <div className='grid gap-5 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2'>

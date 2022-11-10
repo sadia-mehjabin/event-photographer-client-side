@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/UseTitle';
 import img from '../../images/14.webp'
 import Service from '../../services/Service';
 import ExtraSection1 from './ExtraSection1';
@@ -7,7 +8,8 @@ import ExtraSection1 from './ExtraSection1';
 
 const Home = () => {
     const services = useLoaderData();
-    
+    useTitle('Home')
+
     return (
         <div>
             <div>

@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
+import useTitle from '../hooks/UseTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
     const {user} = useContext(AuthContext)
-
+    useTitle('Add service')
+    
     const handleAddService = event => {
         event.preventDefault()
         const form = event.target;
@@ -29,7 +33,7 @@ const AddService = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('added successfully')
+                toast('added successfully')
                 form.reset()
             }
         })
@@ -45,6 +49,7 @@ const AddService = () => {
             <input name="price" type="text" placeholder="Type here Price" className="input input-bordered w-full my-3" />
             <textarea name="description" className="textarea textarea-primary my-3" placeholder="description"></textarea>
             <button type="submit" className='btn btn-success'>Place New Service</button>
+            <ToastContainer />
             </form>
         </div>
     );

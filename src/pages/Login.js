@@ -2,6 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import useTitle from '../hooks/UseTitle';
 
 const Login = () => {
     const provider = new GoogleAuthProvider()
@@ -10,6 +11,8 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
+    useTitle('login')
+
     const from = location.state?.from?.pathname || '/' ;
 
     const handleLogIn = event => {
@@ -17,7 +20,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        const photoURL = form.photoURL.value;
+        
         
         userLogin(email, password)
         .then(result => {
@@ -63,12 +66,6 @@ const Login = () => {
                         <span className="label-text">Email</span>
                     </label>
                     <input type="email" name='email' placeholder="email" className="input input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">photoURL</span>
-                    </label>
-                    <input type="url" name='photoURL' placeholder="photoURL" className="input input-bordered"  />
                     </div>
                     <div className="form-control">
                     <label className="label">

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddReview = ({data}) => {
     const {user} = useContext(AuthContext)
@@ -16,7 +18,8 @@ const AddReview = ({data}) => {
         const newReview = {
             name,
             serviceName, 
-            review
+            review,
+            email: user.email
         }
         
         fetch('http://localhost:5000/review', {
@@ -29,7 +32,7 @@ const AddReview = ({data}) => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('added successfully')
+                toast('added successfully')
                 form.reset()
             }
         })
@@ -47,6 +50,7 @@ const AddReview = ({data}) => {
                 <textarea name="review" className="textarea textarea-primary my-3 p-5" placeholder="type yor review" required></textarea>
                 <button type="submit" className='btn btn-success' >Place New Review</button>
                 </form>
+                <ToastContainer />
                 </>
                 : <>
                 <h2 className='text-3xl text-primary font-semibold m-5 text-center'>you have to login for add review. please log in.</h2>

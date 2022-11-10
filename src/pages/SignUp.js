@@ -1,21 +1,26 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import useTitle from '../hooks/UseTitle';
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext)
     const [message, setMessage] = useState()
+    useTitle('Sign up')
+    const navigate = useNavigate()
+
     const handleSignUpSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        // console.log(name, email, password)
+        const photoURL = form.photoURL.value;
 
         createUser(email, password)
         .then(result => {
             const user = result.user;
+            navigate('/')
         })
         .catch(error => setMessage(error.message))
     } 
@@ -31,6 +36,12 @@ const SignUp = () => {
                         <span className="label-text">Name</span>
                     </label>
                     <input type="text" name='name' placeholder="Full name" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">photoURL</span>
+                    </label>
+                    <input type="url" name='photoURL' placeholder="photoURL" className="input input-bordered"  />
                     </div>
                     <div className="form-control">
                     <label className="label">

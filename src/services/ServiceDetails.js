@@ -2,11 +2,12 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ReviewTable from '../pages/review/ReviewTable';
 import AddReview from '../pages/review/AddReview'
+import useTitle from '../hooks/UseTitle';
 
 const ServiceDetails = () => {
 
    const data = useLoaderData()
-    console.log(data)
+    useTitle('Service details')
     
     return (
         <div className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1'>

@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/UseTitle';
 
 
 const MyReview = () => {
@@ -10,6 +11,14 @@ const MyReview = () => {
     const reviews = useLoaderData()
     const [myReview, setMyReview]  = useState(reviews)
     
+    useTitle('my review')
+
+    const url = `http://localhost:5000/review?email=${user.email}`
+    useEffect(() => {
+        fetch(`http://localhost:5000/review?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => setMyReview(data))
+    }, [user.email])
 
     const handleDelete = (id) => {
         const agree = window.confirm('are you sure to delete?')
