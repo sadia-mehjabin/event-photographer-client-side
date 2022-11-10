@@ -21,7 +21,7 @@ const SignUp = () => {
         .then(result => {
             const user = result.user;
             user.photoURL = photoURL;
-            user.name = name;
+            user.displayName = name;
             console.log(user)
             navigate('/')
         })
