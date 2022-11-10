@@ -13,7 +13,6 @@ const MyReview = () => {
     
     useTitle('my review')
 
-    const url = `http://localhost:5000/review?email=${user.email}`
     useEffect(() => {
         fetch(`http://localhost:5000/review?email=${user.email}`)
         .then(res => res.json())
@@ -31,7 +30,7 @@ const MyReview = () => {
             .then(data => {
                 console.log(data)
                 if(data.deletedCount > 0){
-                const restReview = reviews.filter(rev => rev._id !== id)
+                const restReview = myReview.filter(rev => rev._id !== id)
                 setMyReview(restReview)
                 toast("deleted successfully")
                 }
